@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../controllers/authenticator_controller.dart';
 
 class Authenticator extends StatefulWidget {
   const Authenticator({Key? key}) : super(key: key);
@@ -8,6 +9,8 @@ class Authenticator extends StatefulWidget {
 }
 
 class _AuthenticatorState extends State<Authenticator> {
+  final _controllerAuth = AuthenticatorController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +47,11 @@ class _AuthenticatorState extends State<Authenticator> {
                   },
                 ),
                 ElevatedButton(
-                  child: const Text('HomePage'),
+                  child: const Text('Testar DB'),
                   onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pushNamed(context, "/");
+                    // Navigator.pop(context);
+                    // Navigator.pushNamed(context, "/");
+                    _controllerAuth.createUser();
                   },
                 ),
               ],
