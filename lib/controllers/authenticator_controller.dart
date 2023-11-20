@@ -4,7 +4,6 @@ import 'package:ada/services/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//objetos do banco
 class AuthenticatorController {
   //instanciando service
   final _serviceUser = UserService();

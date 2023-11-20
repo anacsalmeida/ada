@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
+import '../controllers/home_page_controller.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final _homeController = HomePageController();
+
+  void updatedState() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void initState() {
+    _homeController.getUserData();
+    _homeController.updateState = updatedState;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,9 +33,11 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text(
-              "Página de Favoritos",
-              style: TextStyle(
+            Text(
+              _homeController.user['name'] != null
+                  ? _homeController.user["name"]
+                  : "la",
+              style: const TextStyle(
                 fontSize: 22,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

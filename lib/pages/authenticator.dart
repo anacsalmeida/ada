@@ -10,7 +10,7 @@ class Authenticator extends StatefulWidget {
 }
 
 class _AuthenticatorState extends State<Authenticator> {
-  final _controllerAuth = AuthenticatorController();
+  final _authController = AuthenticatorController();
 
   // ControllerCadastroPage controllerCadastro = new ControllerCadastroPage();
   // ControllerLoginPage controllerLogin = new ControllerLoginPage();
@@ -71,7 +71,7 @@ class _AuthenticatorState extends State<Authenticator> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: TextFormField(
-                        controller: _controllerAuth.controllerEmail,
+                        controller: _authController.controllerEmail,
                         decoration: const InputDecoration(
                             hintText: 'E-mail',
                             fillColor: Colors.black,
@@ -104,7 +104,7 @@ class _AuthenticatorState extends State<Authenticator> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: TextFormField(
-                        controller: _controllerAuth.controllerPassword,
+                        controller: _authController.controllerPassword,
                         decoration: const InputDecoration(
                             hintText: 'Senha',
                             fillColor: Colors.black,
@@ -133,7 +133,7 @@ class _AuthenticatorState extends State<Authenticator> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 controller:
-                                _controllerAuth.login(context);
+                                _authController.login(context);
                               }
                             },
                             style: ElevatedButton.styleFrom(
