@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Ada',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 191, 63, 97),
+        ),
         useMaterial3: true,
       ),
       home: const InitialScreen(),
