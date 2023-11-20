@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:ada/services/user_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //objetos do banco
 class AuthenticatorController {
+  //instanciando service
   final _serviceUser = UserService();
+
+  //pega dados do input
   final controllerName = TextEditingController();
   final controllerEmail = TextEditingController();
   final controllerPassword = TextEditingController();
@@ -24,13 +30,14 @@ class AuthenticatorController {
   //   });
   // }
 
-  login() async {
+  Future<dynamic> login(BuildContext context) async {
     try {
       var email = controllerEmail.text;
       var password = controllerPassword.text;
       var credential = await _serviceUser.login(email, password);
-      // var user = credential["user"];
-      print(credential.user.uid);
+      final sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences.setString('user', jsonEncode(credential));
+      Navigator.of(context).pushReplacementNamed('/home');
     } catch (e) {
       return e;
     }

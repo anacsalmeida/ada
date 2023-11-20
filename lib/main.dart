@@ -1,4 +1,5 @@
 import 'package:ada/pages/initial_screen.dart';
+import 'package:ada/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -26,9 +27,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 191, 63, 97),
         ),
-        useMaterial3: true,
+        // useMaterial3: true,
       ),
-      home: const InitialScreen(),
+      routes: routes(),
       debugShowCheckedModeBanner: false,
     );
   }

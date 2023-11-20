@@ -125,21 +125,24 @@ class _AuthenticatorState extends State<Authenticator> {
                     ),
                     Container(
                       child: Padding(
-                        padding: EdgeInsets.only(top: 15.0),
+                        padding: const EdgeInsets.only(top: 15.0),
                         child: SizedBox(
                           width: 220.0,
                           height: 45.0,
                           child: ElevatedButton(
-                              child: const Text('Entrar'),
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  controller:
-                                  _controllerAuth.login();
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  primary: Color.fromARGB(255, 24, 24, 24),
-                                  textStyle: TextStyle(fontSize: 25))),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                controller:
+                                _controllerAuth.login(context);
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    const Color.fromARGB(255, 191, 63, 97),
+                                textStyle: const TextStyle(
+                                    fontSize: 25, color: Colors.white)),
+                            child: const Text('Entrar'),
+                          ),
                         ),
                       ),
                     ),
