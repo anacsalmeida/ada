@@ -26,36 +26,32 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
-      body: Container(
-        width: double.infinity,
-        color: Colors.purple,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              _homeController.user['name'] != null
-                  ? _homeController.user["name"]
-                  : "la",
-              style: const TextStyle(
-                fontSize: 22,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+      backgroundColor: const Color.fromARGB(255, 255, 238, 247),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            _homeController.user['name'] != null
+                ? _homeController.user["name"]
+                : "la",
+            style: const TextStyle(
+              fontSize: 22,
+              color: const Color.fromARGB(255, 191, 63, 97),
+              fontWeight: FontWeight.bold,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  child: const Text('Login'),
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/login");
-                  },
-                ),
-              ],
-            )
-          ],
-        ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                child: const Text('Login'),
+                onPressed: () {
+                  Navigator.pushNamed(context, "/login");
+                },
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

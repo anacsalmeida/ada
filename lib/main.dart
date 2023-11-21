@@ -1,4 +1,3 @@
-import 'package:ada/pages/initial_screen.dart';
 import 'package:ada/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,13 +5,10 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-        apiKey:
-            'AIzaSyDNNREqcqXkGa_b4bgDFeMSXvCubbCGxJs', //LOCALIZADA NO GOOGLE-SERVICE.json => api_key['current_key']
-        appId:
-            '1:427649541283:android:d05a538ca7d84178e38b16', //ID DO APLICATIVO
-        messagingSenderId: '427649541283', // NÚMERO DO PROJETO
-        projectId: 'adalovelace-66fb1' // NÚMERO DO PROJETO
-        ),
+        apiKey: 'AIzaSyDNNREqcqXkGa_b4bgDFeMSXvCubbCGxJs',
+        appId: '1:427649541283:android:d05a538ca7d84178e38b16',
+        messagingSenderId: '427649541283',
+        projectId: 'adalovelace-66fb1'),
   );
   runApp(const MyApp());
 }

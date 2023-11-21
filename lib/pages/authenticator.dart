@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
 import '../controllers/authenticator_controller.dart';
 
 class Authenticator extends StatefulWidget {
@@ -11,23 +10,12 @@ class Authenticator extends StatefulWidget {
 
 class _AuthenticatorState extends State<Authenticator> {
   final _authController = AuthenticatorController();
-
-  // ControllerCadastroPage controllerCadastro = new ControllerCadastroPage();
-  // ControllerLoginPage controllerLogin = new ControllerLoginPage();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
   }
-
-  // void showToast(String msgErr) {
-  //   Fluttertoast.showToast(
-  //     msg: msgErr,
-  //     fontSize: 15,
-  //     gravity: ToastGravity.BOTTOM,
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
