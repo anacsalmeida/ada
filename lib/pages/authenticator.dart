@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import '../controllers/authenticator_controller.dart';
 
 class Authenticator extends StatefulWidget {
@@ -21,38 +21,48 @@ class _AuthenticatorState extends State<Authenticator> {
     super.initState();
   }
 
-  void showToast(String msgErr) {
-    Fluttertoast.showToast(
-      msg: msgErr,
-      fontSize: 15,
-      gravity: ToastGravity.BOTTOM,
-    );
-  }
+  // void showToast(String msgErr) {
+  //   Fluttertoast.showToast(
+  //     msg: msgErr,
+  //     fontSize: 15,
+  //     gravity: ToastGravity.BOTTOM,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Conecte-se'),
-          backgroundColor: const Color.fromARGB(255, 191, 63, 97)),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: size.height * 0.04),
-        child: Center(
-          child: Column(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 1,
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 255, 238, 247),
+            image: DecorationImage(
+              image: AssetImage("../../assets/images/bg.png"),
+              repeat: ImageRepeat.repeatX,
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: size.height * 0.40,
-                  child: Center(
-                    child: Container(
-                      height: 150,
-                      width: 150,
-                      child: Image.asset('assets/images/logobg.png'),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 30,
+                    bottom: 10,
                   ),
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: const Text(
+                        "Bem-vinda!",
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Color.fromARGB(255, 51, 115, 103),
+                            fontWeight: FontWeight.bold),
+                      )),
                 ),
                 Form(
                   key: _formKey,
@@ -63,10 +73,10 @@ class _AuthenticatorState extends State<Authenticator> {
                           right: size.width * 0.08,
                           bottom: 10),
                       decoration: BoxDecoration(
-                        color: Colors.black12,
+                        color: Colors.white,
                         border: Border.all(
                           width: 3,
-                          color: Colors.black12,
+                          color: const Color.fromARGB(255, 217, 143, 170),
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -74,7 +84,6 @@ class _AuthenticatorState extends State<Authenticator> {
                         controller: _authController.controllerEmail,
                         decoration: const InputDecoration(
                             hintText: 'E-mail',
-                            fillColor: Colors.black,
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.all(10)),
                         style: const TextStyle(
@@ -96,10 +105,10 @@ class _AuthenticatorState extends State<Authenticator> {
                           right: size.width * 0.08,
                           bottom: 10),
                       decoration: BoxDecoration(
-                        color: Colors.black12,
+                        color: Colors.white,
                         border: Border.all(
                           width: 3,
-                          color: Colors.black12,
+                          color: const Color.fromARGB(255, 217, 143, 170),
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -107,7 +116,6 @@ class _AuthenticatorState extends State<Authenticator> {
                         controller: _authController.controllerPassword,
                         decoration: const InputDecoration(
                             hintText: 'Senha',
-                            fillColor: Colors.black,
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.all(10)),
                         style: const TextStyle(
@@ -123,32 +131,38 @@ class _AuthenticatorState extends State<Authenticator> {
                         },
                       ),
                     ),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 15.0),
-                        child: SizedBox(
-                          width: 220.0,
-                          height: 45.0,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                controller:
-                                _authController.login(context);
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 191, 63, 97),
-                                textStyle: const TextStyle(
-                                    fontSize: 25, color: Colors.white)),
-                            child: const Text('Entrar'),
-                          ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0),
+                      child: SizedBox(
+                        width: 220.0,
+                        height: 45.0,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              controller:
+                              _authController.login(context);
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                      color: Color.fromARGB(255, 121, 168, 159),
+                                      width: 2,
+                                      style: BorderStyle.solid),
+                                  borderRadius: BorderRadius.circular(20)),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 151, 210, 199),
+                              textStyle: const TextStyle(
+                                  fontSize: 25, color: Colors.white)),
+                          child: const Text('Entrar'),
                         ),
                       ),
                     ),
                   ]),
-                )
-              ]),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
