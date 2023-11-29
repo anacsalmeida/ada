@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 //acesso ao banco
@@ -8,19 +7,22 @@ class UserService {
   final _userFirestore = FirebaseFirestore.instance.collection('user');
   final _authFibase = FirebaseAuth.instance;
 
-  createUser(dynamic user) async {
+  createUser(String email, String password) async {
     try {
-      await _userFirestore.doc().set({
-        'name': user['name'],
-        'email': user['email'],
-        'password': user['password'],
-        'date': user['date'],
-        'about_me': user['about_me'],
-        'education': user['education'],
-        'profession': user['profession'],
+      var index = email.indexOf('@'); 
+      var name = email.substring(0, index);
+
+      var user = await _authFibase.createUserWithEmailAndPassword(
+          email: email, password: password);
+
+      await _userFirestore.doc(user.user!.uid).set({
+        'email': email,
+        'name': name,
+        'password': password,
+        'date': DateTime.now().toIso8601String()
       });
-    } on FirebaseException catch (error) {
-      print(error.message);
+    } on FirebaseException catch (e) {
+      return e.message;
     }
   }
 
@@ -35,7 +37,7 @@ class UserService {
       var userData = documentSnapshot.data();
       return userData;
     } on FirebaseAuthException catch (e) {
-      return e;
+      return e.message;
     }
   }
 
